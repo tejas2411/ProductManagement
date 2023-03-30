@@ -15,6 +15,11 @@ namespace ProductManagement.Controllers
         ProductDBEntities2 dbobj = new ProductDBEntities2();
         public ActionResult Product(ProductList LIST)
         {
+            if(LIST != null)
+            {
+                return View(LIST);
+            }
+            else
             return View();
         }
 
@@ -34,7 +39,7 @@ namespace ProductManagement.Controllers
                 list.CategoryName = model.CategoryName;
 
 
-                if(model.ProductID==0)
+                if(model.ProductID == 0)
                 {
                     dbobj.ProductLists.Add(list);
                     dbobj.SaveChanges();
