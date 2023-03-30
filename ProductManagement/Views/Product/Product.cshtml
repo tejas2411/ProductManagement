@@ -1,0 +1,49 @@
+﻿@model ProductManagement.ProductList
+<!-- this means all the fields in table productlist is assigned to this form. -->
+
+@{
+    ViewBag.Title = "Product";
+}
+
+<h2>Product Registration Form</h2>
+<style>
+    .error{
+        color:red;
+    }
+</style>
+
+@using (Html.BeginForm("AddProduct","Product",FormMethod.Post))
+  {
+
+    <div class="container">
+
+
+        <div class="form-group">
+            @Html.HiddenFor(x => x.ProductID)
+            <label>ProductName:</label>
+            @Html.ValidationMessageFor(x => x.ProductName, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+        </div>
+
+
+        <div class="form-group">
+            <label>CategoryID:</label>
+            @Html.ValidationMessageFor(x => x.CategoryID, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.CategoryID, new { @class = "form-control" })
+        </div>
+
+
+        <div class="form-group">
+            <label>CategoryName:</label>
+            @Html.ValidationMessageFor(x => x.CategoryName, "", new { @class = "error" })
+            @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        </div>
+
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+        </div>
+
+    </div>
+  }

@@ -1,0 +1,29 @@
+﻿@model List<ProductManagement.ProductList>
+@{
+    ViewBag.Title = "Productlist";
+}
+
+<h2>Productlist</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>ProductID</th>
+        <th>ProductName</th>
+        <th>CategoryID</th>
+        <th>CategoryName</th>
+    </tr>
+
+    @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.ProductID</td>
+                    <td>@item.ProductName</td>
+                    <td>@item.CategoryID</td>
+                    <td>@item.CategoryName</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Product", "Product", new {item.ProductID,item.ProductName,item.CategoryID,item.CategoryName  }, null)
+                        @Html.ActionLink("Delete", "Delete", "Product", new { id = item.ProductID }, null)
+                    </td>
+                </tr>
+            }
+</table>
